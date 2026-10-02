@@ -24,7 +24,8 @@ generation quality with fast parallel decoding, establishing a strong
 quality-efficiency trade-off under optimized inference engines.
 
 [Results](#results) · [Method](#method) · [Getting started](#getting-started) ·
-[Training](docs/training.md) · [Evaluation](docs/evaluation.md)
+[Training](docs/training.md) · [Evaluation](docs/evaluation.md) ·
+[Limitations](#limitations)
 
 **Weights:** [ALoDLM-1.7B](https://huggingface.co/amazon/ALoDLM-1.7B) ·
 [ALoDLM-8B](https://huggingface.co/amazon/ALoDLM-8B)
@@ -236,6 +237,22 @@ matching prompts, reference labels, test suites, hardware, and decoding settings
 
 The [optimized example](examples/generate_optimized.py) is a thin wrapper around
 the installed optimized command. It requires no external engine checkout.
+
+## Limitations
+
+ALoDLM can have a longer time to first token than a comparable autoregressive
+(AR) model. Its recurrent architecture builds depth-specific KV caches during
+prompt prefill and may require multiple refinement passes before committing
+the first output tokens. This additional computation can reduce the benefit
+of parallel decoding for short responses or latency-sensitive interactions.
+
+Generation speed is also input-dependent: token confidence and adaptive
+stopping decisions determine the amount of recurrent computation and the
+number of tokens committed in parallel. Throughput can therefore vary across
+prompts, datasets, and domains, even with greedy decoding. On difficult inputs
+or domains less well covered during training, additional refinement and fewer
+parallel commitments may reduce or reverse the speed advantage over an
+optimized AR baseline.
 
 ## Validation
 
