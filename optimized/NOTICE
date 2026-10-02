@@ -1,0 +1,24 @@
+ALoDLM: Adaptively Looped Diffusion Language Models
+
+This distribution includes a modified WeDLM inference engine from Tencent:
+https://github.com/tencent/WeDLM
+
+The wedlm/ package retains upstream copyright and license notices.
+Modifications include adaptive recurrent forward passes, depth-aware paged
+KV caching, learned halting, committed-token embedding feedback, per-pass
+and decision CUDA graphs, and packaging/documentation for ALoDLM.
+
+The governing upstream terms are reproduced in licenses/WeDLM.txt, including
+the territorial restriction and the MIT attribution for nano-vllm
+(Copyright (c) 2025 Xingkai Yu). Original per-file Apache notices are retained;
+they do not replace the governing upstream license included in this release.
+
+The alodlm_optimized/ package supplies the command-line interface, runtime
+compatibility adapters, and completed-depth cache repair for ALoDLM.
+Amazon-authored material is covered by LICENSE, except where upstream terms
+apply. No replacement license grant is made for third-party material.
+
+PyTorch, Transformers, vLLM, FlashAttention, Triton, and other installed
+dependencies retain their respective licenses. vLLM supplies the compatible
+FlashAttention 2 kernel bundle; requests are executed by the included
+ALoDLM-aware engine.

@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alodlm-optimized"
+version = "0.1.0"
+description = "ALoDLM adaptive CUDA-graph inference engine"
+readme = "README.md"
+license = "CC-BY-NC-4.0 AND LicenseRef-WeDLM"
+license-files = ["LICENSE", "NOTICE", "licenses/*.txt"]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "vllm==0.19.1",
+  "torch==2.10.0",
+  "transformers==5.5.4",
+  "huggingface-hub>=0.34",
+  "safetensors>=0.6",
+  "numpy>=1.24",
+  "tqdm>=4.60",
+  "xxhash>=3.0",
+]
+
+[project.scripts]
+alodlm-generate-optimized = "alodlm_optimized.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["alodlm_optimized*", "wedlm*"]
+namespaces = true
+
+[tool.distutils.sdist]
+owner = "root"
+group = "root"

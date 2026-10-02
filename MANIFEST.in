@@ -1,0 +1,9 @@
+include NOTICE
+include .gitignore
+recursive-include examples *.py
+recursive-include optimized *.py *.toml *.md LICENSE NOTICE
+recursive-include optimized/licenses *.txt
+prune optimized/build
+prune optimized/dist
+prune optimized/*.egg-info
+global-exclude *.py[cod] .DS_Store

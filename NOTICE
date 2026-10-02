@@ -1,0 +1,21 @@
+ALoDLM: Adaptively Looped Diffusion Language Models
+
+Amazon-authored material is licensed under the CC BY-NC 4.0 terms in LICENSE,
+except where otherwise indicated. Third-party material retains its original
+terms.
+
+This project includes work derived from WeDLM (Tencent):
+https://github.com/tencent/WeDLM
+
+The portable alodlm/ implementation adapts attention, masking, recurrence,
+training objectives, generation, and answer extraction from WeDLM.
+The optimized/wedlm/ package includes the inference engine with adaptive
+recurrence, depth-aware KV caching, committed-token feedback, and CUDA graphs.
+See optimized/NOTICE for the engine's modification and dependency notices.
+
+The complete supplied WeDLM terms and nano-vllm MIT attribution are retained
+in optimized/licenses/WeDLM.txt, including the territorial restriction.
+This shared copy covers the WeDLM-derived material in both implementations.
+This release does not replace those upstream terms.
+
+Model weights are distributed separately and retain their own licenses.

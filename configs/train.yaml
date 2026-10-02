@@ -1,0 +1,32 @@
+# Example settings for a new run on your own inputs.
+model_dir: "<LOCAL_MODEL_DIRECTORY>"
+train_file: "<LOCAL_TRAINING_JSONL>"
+cache_file: "<LOCAL_PACKED_CACHE>"
+output_dir: outputs/train
+max_seq_length: 4096
+epochs: 1  # Choose a budget for your own run.
+gradient_accumulation_steps: 1
+learning_rate: 1.0e-5
+warmup_ratio: 0.03
+weight_decay: 0.01
+max_grad_norm: 1.0
+precision: bf16
+seed: 42
+logging_steps: 10
+save_steps: 500
+save_total_limit: 40
+use_deepspeed: false
+model:
+  loop_start: 10
+  loop_end: 26
+  max_depth: 4
+  depth_prior_c: 0.4
+  kl_beta_mi: 0.1
+  kl_beta_marg: 1.0
+  gate_init_pi: [0.25, 0.25, 0.25, 0.25]  # Uniform exit-depth masses for a new gate.
+  mask_token_id: 151665
+  block_size: 32
+  gradient_checkpointing: true
+  gradient_checkpointing_stride: 2
+  attention_backend: sdpa
+  compile_layers: false

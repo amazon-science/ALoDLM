@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alodlm"
+version = "0.1.0"
+description = "Adaptively Looped Diffusion Language Model"
+readme = "README.md"
+license = "CC-BY-NC-4.0 AND LicenseRef-WeDLM"
+license-files = ["LICENSE", "NOTICE", "optimized/licenses/*.txt"]
+requires-python = ">=3.10"
+dependencies = [
+  "torch==2.8.0",
+  "transformers==4.56.1",
+  "huggingface-hub>=0.34,<1.0",
+  "accelerate==1.10.1",
+  "safetensors>=0.6",
+  "PyYAML>=6",
+]
+
+[project.optional-dependencies]
+distributed = ["deepspeed==0.19.4"]
+evaluation = ["math-verify==0.8.0", "evalplus==0.3.1"]
+
+[project.scripts]
+alodlm-train = "alodlm.train:main"
+alodlm-generate = "alodlm.generate:main"
+alodlm-evaluate = "alodlm.evaluate:main"
+alodlm-prepare = "alodlm.data:main"
+
+[tool.setuptools]
+packages = ["alodlm"]
+
+[tool.setuptools.data-files]
+"share/alodlm" = ["README.md", "LICENSE", "NOTICE"]
+"share/alodlm/examples" = ["examples/*.py"]
+"share/alodlm/configs" = ["configs/*.yaml"]
+"share/alodlm/docs" = ["docs/*.md"]
+"share/alodlm/assets" = ["assets/*.png"]
+"share/alodlm/optimized" = ["optimized/README.md", "optimized/LICENSE", "optimized/NOTICE"]
+"share/alodlm/optimized/licenses" = ["optimized/licenses/*.txt"]
+"share/alodlm/tests" = ["tests/*.py"]
+
+[tool.distutils.sdist]
+owner = "root"
+group = "root"
