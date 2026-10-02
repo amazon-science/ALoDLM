@@ -1,5 +1,6 @@
 include NOTICE
 include .gitignore
+include CONTRIBUTING.md CODE_OF_CONDUCT.md
 recursive-include examples *.py
 recursive-include optimized *.py *.toml *.md LICENSE NOTICE
 recursive-include optimized/licenses *.txt

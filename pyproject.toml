@@ -33,7 +33,7 @@ alodlm-prepare = "alodlm.data:main"
 packages = ["alodlm"]
 
 [tool.setuptools.data-files]
-"share/alodlm" = ["README.md", "LICENSE", "NOTICE"]
+"share/alodlm" = ["README.md", "LICENSE", "NOTICE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"]
 "share/alodlm/examples" = ["examples/*.py"]
 "share/alodlm/configs" = ["configs/*.yaml"]
 "share/alodlm/docs" = ["docs/*.md"]

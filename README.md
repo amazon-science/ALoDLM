@@ -274,6 +274,12 @@ checkpoint resume. The full suite requires the evaluation dependencies.
 
 For the optimized environment, see the [engine checks](optimized/README.md#validation).
 
+## Security and contributions
+
+See [CONTRIBUTING](CONTRIBUTING.md) for the research release's contribution policy
+and [security reporting](CONTRIBUTING.md#security-issue-notifications).
+This project follows the [Amazon Open Source Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## License and attribution
 
 ALoDLM's original contributions, including its code, documentation, and figures,
