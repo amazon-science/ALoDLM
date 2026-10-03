@@ -1,6 +1,10 @@
 """Check inference downloads without contacting a model hub."""
 
+import json
+import os
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -9,6 +13,26 @@ from alodlm.hub import resolve_model
 
 
 class HubTests(unittest.TestCase):
+    def test_import_respects_hub_network_mode(self):
+        code = (
+            "import json; import alodlm.generate; "
+            "from huggingface_hub.constants import HF_HUB_OFFLINE; "
+            "from transformers.utils import is_offline_mode; "
+            "print(json.dumps([HF_HUB_OFFLINE, is_offline_mode()]))"
+        )
+        for setting, expected in ((None, False), ("0", False), ("1", True)):
+            with self.subTest(setting=setting):
+                environment = dict(os.environ)
+                for key in ("HF_HUB_OFFLINE", "TRANSFORMERS_OFFLINE"):
+                    if setting is None:
+                        environment.pop(key, None)
+                    else:
+                        environment[key] = setting
+                result = subprocess.run(
+                    [sys.executable, "-c", code], env=environment, text=True,
+                    capture_output=True, check=True, timeout=60)
+                self.assertEqual(json.loads(result.stdout), [expected, expected])
+
     def test_local_directory_stays_offline(self):
         with tempfile.TemporaryDirectory() as directory:
             with patch("huggingface_hub.snapshot_download") as download:
