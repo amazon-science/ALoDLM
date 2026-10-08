@@ -276,6 +276,11 @@ For the optimized environment, see the [engine checks](optimized/README.md#valid
 
 ## Security and contributions
 
+This code is being released solely for academic and scientific reproducibility
+purposes, in support of the methods and findings described in the associated
+publication. Pull requests are not being accepted in order to maintain the code
+exactly as it was used in the paper.
+
 See [CONTRIBUTING](CONTRIBUTING.md) for the research release's contribution policy
 and [security reporting](CONTRIBUTING.md#security-issue-notifications).
 This project follows the [Amazon Open Source Code of Conduct](CODE_OF_CONDUCT.md).
@@ -301,3 +306,24 @@ third-party attribution. Its license terms are retained in
 [optimized/licenses/WeDLM.txt](optimized/licenses/WeDLM.txt), including a territorial restriction.
 No replacement license grant is made for these components. Model weights and
 dependencies retain their own license terms.
+
+## How to cite
+
+If you use ALoDLM in your research, please cite our paper:
+
+[ALoDLM: Adaptively Looped Diffusion Language Models](https://arxiv.org/abs/2610.04198).
+
+```bibtex
+@misc{fang2026alodlmadaptivelyloopeddiffusion,
+  title = {{ALoDLM}: Adaptively Looped Diffusion Language Models},
+  author = {Liancheng Fang and Zhuowei Li and Youngeun Kim and Tianchen Zhao
+            and Rajat Koner and Jiaye Wu and Linghan Xu and Xuanbai Chen
+            and Xiang Xu and Zheng Zhang and Jakub Zablocki and Nishant Sankaran
+            and Yifan Xing},
+  year = {2026},
+  eprint = {2610.04198},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.AI},
+  url = {https://arxiv.org/abs/2610.04198}
+}
+```
